@@ -1,0 +1,11 @@
+[project]
+name = "emailsorter"
+version = "0.1.0"
+description = "Rule-based email sorting for Gmail (IMAP) and Proton (Playwright UI)."
+requires-python = ">=3.10"
+
+[project.scripts]
+emailsort = "emailsorter.cli:main"
+
+[tool.ruff]
+line-length = 100

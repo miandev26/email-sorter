@@ -1,0 +1,46 @@
+{
+  "defaults": {
+    "importance": "normal",
+    "action": {
+      "gmail": "none",
+      "proton": "none"
+    }
+  },
+  "rules": [
+    {
+      "name": "Banking",
+      "match": {
+        "from_domains": ["paypal.com", "stripe.com"],
+        "subject_keywords": ["invoice", "zahlung", "payment", "receipt"]
+      },
+      "set": {"importance": "high"},
+      "action": {
+        "gmail": {"move_to": "INBOX/Finance"},
+        "proton": {"move_to": "Finance"}
+      }
+    },
+    {
+      "name": "Newsletters",
+      "match": {
+        "header_exists": ["List-Unsubscribe"],
+        "from_domains": ["substack.com", "mailchimp.com"]
+      },
+      "set": {"importance": "low"},
+      "action": {
+        "gmail": {"move_to": "INBOX/Newsletters", "mark_read": true},
+        "proton": {"move_to": "Newsletters"}
+      }
+    },
+    {
+      "name": "Important senders",
+      "match": {
+        "from_addresses": ["boss@example.com", "family@example.com"]
+      },
+      "set": {"importance": "high"},
+      "action": {
+        "gmail": {"move_to": "INBOX/Important"},
+        "proton": {"move_to": "Important"}
+      }
+    }
+  ]
+}
